@@ -4,8 +4,8 @@ function Player:load()  --loads variables and other shit
   self.y = 0
   self.startX = self.x
   self.startY = self.y
-  self.width = 20
-  self.height = 60
+  self.width = 18
+  self.height = 18
   self.xVel = 0
   self.yVel = 100
   self.maxSpeed = 250
@@ -45,17 +45,17 @@ end
 
 function Player:loadAssets()
   self.animation = {timer = 0, rate = 0.1}
-  self.animation.run = {total = 6, current = 1, img = {}}
+  self.animation.run = {total = 4, current = 1, img = {}}
   for i=1,self.animation.run.total do
     self.animation.run.img[i] = love.graphics.newImage("assets/player/run/"..i..".png")
   end
   
-  self.animation.idle = {total = 4, current = 1, img = {}}
+  self.animation.idle = {total = 15, current = 1, img = {}}
   for i=1,self.animation.idle.total do
     self.animation.idle.img[i] = love.graphics.newImage("assets/player/idle/"..i..".png")
   end
   
-  self.animation.air = {total = 4, current = 1, img = {}}
+  self.animation.air = {total = 9, current = 1, img = {}}
   for i=1,self.animation.air.total do
     self.animation.air.img[i] = love.graphics.newImage("assets/player/air/"..i..".png")
   end

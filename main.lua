@@ -7,6 +7,7 @@ local Enemy = require("enemy")
 local GUI = require("gui")
 local Camera = require("camera")
 local Map = require("map")
+local Music = require("music")
 
 
 function love.load()
@@ -14,6 +15,7 @@ function love.load()
   Map:load()
   GUI:load()
   Player:load()
+  Music:load()
 end
 
 function love.update(dt)
@@ -61,5 +63,13 @@ function love.keypressed(key)
   
   if key == "space" then
     Player:jump()
+  end
+  
+  if key == "1" then
+    Music:playSynth()
+  end
+  
+  if key == "2" then
+    Music:playBeat()
   end
 end
