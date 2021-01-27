@@ -8,6 +8,7 @@ local Player = require("player")
 
 function Map:load()
   self.currentLevel = 1
+  self.currentWorld = "white"
   World = love.physics.newWorld(0,2000)
   World:setCallbacks(beginContact, endContact)
   
@@ -35,8 +36,19 @@ function Map:update(dt)
   end
 end
 
+function Map:changeWorld()
+  if Player.shifted then
+    self.currentWorld = "black"
+  else
+    self.currentWorld = "white"
+  end
+  self:init()
+  self:clean()
+  self:spawnEntities()
+end
+
 function Map:init()
-  self.level = STI("assets/map/"..self.currentLevel..".lua", {"box2d"})
+  self.level = STI("assets/map/"..self.currentWorld.."/"..self.currentLevel..".lua", {"box2d"})
   self.level:box2d_init(World)
   
   self.solidLayer = self.level.layers.solid

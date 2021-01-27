@@ -1,3 +1,4 @@
+--[[
 local Music = {}
 function Music:load()
   self.lv1 = {}
@@ -36,3 +37,4 @@ function Music:playSynth()
 end
 
 return Music
+--]]

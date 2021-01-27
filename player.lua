@@ -5,7 +5,7 @@ function Player:load()  --loads variables and other shit
   self.startX = self.x
   self.startY = self.y
   self.width = 18
-  self.height = 18
+  self.height = 16
   self.xVel = 0
   self.yVel = 100
   self.maxSpeed = 250
@@ -29,6 +29,8 @@ function Player:load()  --loads variables and other shit
   self.alive = true
   self.grounded = false
   self.jumps = {current = 2, max = 2}
+  
+  self.shifted = false
   
   self.facingRight = true
   self.state = "idle"
@@ -115,6 +117,15 @@ function Player:update(dt) --updates the functions
   self:move(dt)
   self:applyGravity(dt)
   self:respawn()
+end
+
+function Player:shiftWorld()
+  if self.shifted then
+    self.shifted = false
+  else
+    self.shifted = true
+  end
+  print(self.shifted)
 end
 
 function Player:unTint(dt) --sets player back to original color
